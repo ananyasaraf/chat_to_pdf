@@ -1,0 +1,82 @@
+Ananya Saraf 
+Phone: +91 9022318287| Email: ananyasaraf0302@gmail.com | LinkedIn: https://www.linkedin.com/in/ananya-saraf-0b7467226/ | Indore, MP 
+ 
+PROFESSIONAL SUMMARY 
+Innovative and results-driven Software Engineer with a passion for harnessing cutting-edge technologies to create impactful solutions. Equipped 
+with expertise in Python, MySQL, C and Java. A proactive problem-solver with a strong commitment to excellence, dedicated to driving positive 
+change through technology. 
+ACADEMICS 
+Bachelor of Computer Science Engineering | Medi-Caps University 
+2021 – 2025 
+• 
+CGPA – 7.54 
+Dr. Sudhakar Rao Jadhavar college, Pune 
+2021 
+• 
+Class XII | HSC | Percentage – 86.6% 
+     Abhinav English School ,Pune 
+• 
+Class X | CBSE | Percentage – 66.6% 
+2019 
+ 
+SKILLS AND PROFICIENCY 
+• 
+Programming languages: Python | Java | C++  
+• 
+Databases: MySQL, Postgresql 
+• 
+Tools and Technologies: Machine Learning |  React.js |Node.js |Spring 
+INTERNSHIP 
+Role: Software Engineering Intern | BluCursor Infotech Pvt. Ltd. 
+Aug 2024 – Sept 2024. 
+• 
+Data Formatting Using JSON: Utilized JSON formatting to organize data effectively for machine learning pipelines. 
+• 
+Maintained documentation , cleaned datasets and Prepared raw datasets. 
+ 
+     Role:FullStack Intern | RackBank DataCenter pvt, Ltd.  
+ 
+ 
+ 
+ 
+        
+ Mar 2025-Present  
+• 
+Build and Maintain web app with React.js And Python 
+• 
+Ensured cross-browser performance 
+ACADEMIC PROJECTS 
+Diabetic Retinopathy Detection  
+• 
+Developed a web application using a custom-trained CNN model and Flask backend, achieving 72% validation accuracy with a dataset 
+consisting of Improved accessibility of medical diagnostics through AI-powered image analysis. 
+ 
+     Pharmacy Management System  
+• 
+Developed a fullstack  application and Manages pharmacy operations like inventory, sales, purchases. 
+• 
+Tools: Java, MySQL, JDBC 
+ 
+Split Money App 
+• 
+Developed a web-based Split Money application using Java, React , Spring, and MySQL to manage and track shared expenses among 
+users. 
+ 
+ 
+ 
+CERTIFICATIONS 
+• 
+Python | HackerRank 
+• 
+JAVA | HackerRank 
+• 
+SQL | HackerRank 
+ 
+CO-CURRICULAR 
+• 
+Science Club Core Member | Medi-Caps University 
+• 
+Volunteering | NASSCOM Madhya Pradesh CXO Meet 
+INTERESTS 
+• 
+Cooking |Playing Tabla | Traveling 
