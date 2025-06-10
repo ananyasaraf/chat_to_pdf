@@ -19,7 +19,7 @@ const client = new OpenAI({
     },
   },
 });
-console.log("hello",client);
+// console.log("hello",client);
 const queue = new Queue('file-upload-queue',{
     connection: { host: 'localhost', port: 6379 }});
 
@@ -57,9 +57,13 @@ app.post('/upload/pdf',upload.single('pdf'),(req,res)=>{
 
 
 
+// console.log("hello");
+
+
+
 app.get('/chat', async(req,res)=>{
     try{
-      console.log(req.query.message);
+    // console  .log(req.query.message);
     const userQuery = req.query.message;
     const embeddings = new GoogleGenerativeAIEmbeddings({
   apiKey:process.env.gemini_apiKey
@@ -88,9 +92,9 @@ const chatResult  =  await client.chat?.completions?.create({
     { role: 'user', content: userQuery },
   ],
 });
-    console.log("AI response",chatResult);
+    // console.log("AI response",chatResult);
   const chatResponse = chatResult.choices?.[0]?.message?.content|| "No response from AI";
-  console.log(chatResponse);
+  // console.log(chatResponse);
     const replyText = chatResponse;
     
     return res.json({ message: replyText, chatResponse });
@@ -101,5 +105,5 @@ catch(err){
 }
 });
 app.listen(8000, () => {
-    console.log(`Server is running on http://localhost:8000`);
+    // console.log(`Server is running on http://localhost:8000`);
 });

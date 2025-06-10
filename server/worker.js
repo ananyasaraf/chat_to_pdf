@@ -7,12 +7,12 @@ import 'dotenv/config';
 const worker = new Worker(
     'file-upload-queue', 
     async(job)=>{
-        console.log(`job:`,job.data);
+        // console.log(`job:`,job.data);
         const data = JSON.parse(job.data);
         
     const loader = new PDFLoader(data.path);
     const docs = await loader.load();
-        console.log(`docs`,docs);
+        // console.log(`docs`,docs);
    const embeddings = new GoogleGenerativeAIEmbeddings({
   apiKey:process.env.google_genai_apiKey
 });
@@ -22,10 +22,10 @@ const worker = new Worker(
     });
         
         const splitDocs = await splitter.splitDocuments(docs);
-        console.log("splitDocs length:", splitDocs.length);
+        // console.log("splitDocs length:", splitDocs.length);
        try {
         const test = await embeddings.embedQuery("Hello world");
-        console.log("Embedding success:", test.length);
+        // console.log("Embedding success:", test.length);
         } catch (err) {
             console.error("Embedding failed:", err);
         }
@@ -38,7 +38,7 @@ const worker = new Worker(
         );
 
     await vectorStore.addDocuments(splitDocs);
-    console.log("vectorstore added");
+    // console.log("vectorstore added");
     },
     {concurrency:100 , connection: { host: 'localhost', port: 6379 }}
 );
