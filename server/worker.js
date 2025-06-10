@@ -3,6 +3,7 @@ import { QdrantVectorStore } from "@langchain/community/vectorstores/qdrant";
 import { PDFLoader } from "@langchain/community/document_loaders/fs/pdf";
 import {CharacterTextSplitter} from "langchain/text_splitter";
 import {GoogleGenerativeAIEmbeddings} from "@langchain/google-genai";
+import 'dotenv/config';
 const worker = new Worker(
     'file-upload-queue', 
     async(job)=>{
@@ -13,7 +14,7 @@ const worker = new Worker(
     const docs = await loader.load();
         console.log(`docs`,docs);
    const embeddings = new GoogleGenerativeAIEmbeddings({
-  apiKey:'AIzaSyC6XegVLncmX_BL9TbtekPkpDy1RXtBVBo',
+  apiKey:process.env.google_genai_apiKey
 });
     const splitter = new CharacterTextSplitter({
         chunkSize: 1000,

@@ -3,16 +3,23 @@ import cors from 'cors';
 import multer from 'multer';
 import { Queue } from 'bullmq';
 import { GoogleGenerativeAIEmbeddings } from '@langchain/google-genai';
-import { GoogleGenerativeAI } from "@google/generative-ai";
-
+import { OpenAI } from 'openai';
 import { QdrantVectorStore } from "@langchain/community/vectorstores/qdrant";
-
-import path from 'path';
-import { json } from 'stream/consumers';
+import 'dotenv/config';
 const app = express();
 
-const client = new GoogleGenerativeAI({apiKey:'AIzaSyC6XegVLncmX_BL9TbtekPkpDy1RXtBVBo'});
-const model = client.getGenerativeModel({model:"gemini-001"});
+const client = new OpenAI({ 
+  baseURL: 'https://openrouter.ai/api/v1',
+  
+  apiKey:process.env.openrouter_apiKey,
+  configuration: {
+    defaultHeaders: {
+      'HTTP-Referer': 'http://localhost:8000',
+      'X-Title': 'PDF-RAG',
+    },
+  },
+});
+console.log("hello",client);
 const queue = new Queue('file-upload-queue',{
     connection: { host: 'localhost', port: 6379 }});
 
@@ -48,11 +55,14 @@ app.post('/upload/pdf',upload.single('pdf'),(req,res)=>{
     return res.json({message :'uploaded'});
 });
 
+
+
 app.get('/chat', async(req,res)=>{
     try{
-    const userQuery = "what skill are there in this pdf";//req.query.messsage;
+      console.log(req.query.message);
+    const userQuery = req.query.message;
     const embeddings = new GoogleGenerativeAIEmbeddings({
-  apiKey:'AIzaSyC6XegVLncmX_BL9TbtekPkpDy1RXtBVBo',
+  apiKey:process.env.gemini_apiKey
 });
 
 const vectorStore = await QdrantVectorStore.fromExistingCollection(
@@ -66,23 +76,24 @@ const vectorStore = await QdrantVectorStore.fromExistingCollection(
 const docs = await ret.invoke(userQuery);
 const  SYSTEM_PROMPT = `You are a helpful assistant who answer the user query based on available context from the PDF file. 
 Context:
-${JSON.stringify(result)}
+${JSON.stringify(docs)}
 If you don't know the answer, just say that you don't know, don't try to make up an answer.`;
 
 
-const chatResult  =  model.startChat({
-    messages: [
-        {
-            role: "user",
-            parts: userQuery,
-        }],
-        systemInstruction: SYSTEM_PROMPT,
+const chatResult  =  await client.chat?.completions?.create({
+  model: "deepseek/deepseek-r1-0528-qwen3-8b:free",
+  messages: [
+    
+    { role: 'system', content: SYSTEM_PROMPT },
+    { role: 'user', content: userQuery },
+  ],
 });
-
-    const chatResponse = await chat.sendMessage(userQuery);
-    const replyText = chatResponse.response.text();
-
-    return res.json({ message: replyText, docs });
+    console.log("AI response",chatResult);
+  const chatResponse = chatResult.choices?.[0]?.message?.content|| "No response from AI";
+  console.log(chatResponse);
+    const replyText = chatResponse;
+    
+    return res.json({ message: replyText, chatResponse });
 }
 catch(err){
         console.error("Error in /chat:", err.message);
