@@ -68,10 +68,10 @@ const FileUploadComponent: React.FC = () => {
       }
       
       const data = await response.json();
-      console.log('Upload successful:', data);
+    //   console.log('Upload successful:', data);
       // You might want to handle the successful upload here (e.g., update parent state)
     } catch (error) {
-      console.error('Upload failed:', error);
+    //   console.error('Upload failed:', error);
       // Handle error state here
     } finally {
       setIsUploading(false);
