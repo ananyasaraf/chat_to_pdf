@@ -56,9 +56,7 @@ app.post('/upload/pdf',upload.single('pdf'),(req,res)=>{
 });
 
 
-
 // console.log("hello");
-
 
 
 app.get('/chat', async(req,res)=>{
@@ -105,5 +103,5 @@ catch(err){
 }
 });
 app.listen(8000, () => {
-    // console.log(`Server is running on http://localhost:8000`);
+     console.log(`Server is running on http://localhost:8000`);
 });
