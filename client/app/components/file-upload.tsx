@@ -66,7 +66,7 @@ const FileUploadComponent: React.FC = () => {
     });
 
     try {
-      const response = await fetch('http://localhost:8000/upload/pdf', {
+      const response = await fetch(`${process.env.BASE_URL}/upload/pdf`, {
         method: 'POST',
         body: formData,
       });
