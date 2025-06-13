@@ -15,7 +15,7 @@ export default function Home() {
     <FileUploadComponent />
     
     {/* Recent files section */}
-    <div className="w-full mt-8">
+    {/* <div className="w-full mt-8">
       <h3 className="text-sm font-semibold text-gray-400 mb-3">RECENT FILES</h3>
       <div className="space-y-2">
         {[].length > 0 ? (
@@ -29,7 +29,7 @@ export default function Home() {
           </div>
         )}
       </div>
-    </div>
+    </div> */}
   </div>
 
   {/* Right Panel - Chat */}

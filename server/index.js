@@ -11,7 +11,7 @@ const app = express();
 const client = new OpenAI({ 
   baseURL: 'https://openrouter.ai/api/v1',
   
-  apiKey:process.env.openrouter_apiKey,
+  apiKey:process.env.OPEN_AIKEY,
   configuration: {
     defaultHeaders: {
       'HTTP-Referer': 'http://localhost:8000',
@@ -58,13 +58,12 @@ app.post('/upload/pdf',upload.single('pdf'),(req,res)=>{
 
 // console.log("hello");
 
-
 app.get('/chat', async(req,res)=>{
     try{
     // console  .log(req.query.message);
     const userQuery = req.query.message;
     const embeddings = new GoogleGenerativeAIEmbeddings({
-  apiKey:process.env.gemini_apiKey
+  apiKey:process.env.GEMINI_KEY
 });
 
 const vectorStore = await QdrantVectorStore.fromExistingCollection(

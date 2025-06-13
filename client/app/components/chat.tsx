@@ -53,7 +53,7 @@ const ChatComponent: React.FC = () => {
         isLoading: true
       }]);
 
-      const res = await fetch(`${process.env.BASE_URL}/chat?message=${encodeURIComponent(message)}`);
+      const res = await fetch(`http://localhost:8000/chat?message=${encodeURIComponent(message)}`);
       if (!res.ok) { 
         throw new Error(`Server error: ${res.status}`);
       }
@@ -97,11 +97,7 @@ const ChatComponent: React.FC = () => {
 
   const formatTime = (date?: Date) => {
     if (!date) return '';
-    return date.toLocaleTimeString('en-US', {
-  timeZone: 'UTC',
-  hour: '2-digit',
-  minute: '2-digit',
-});
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
   return (

@@ -14,7 +14,7 @@ const worker = new Worker(
     const docs = await loader.load();
          console.log(`docs`,docs);
    const embeddings = new GoogleGenerativeAIEmbeddings({
-  apiKey:process.env.google_genai_apiKey
+  apiKey:process.env.GEMINI_KEY
 });
     const splitter = new CharacterTextSplitter({
         chunkSize: 1000,
